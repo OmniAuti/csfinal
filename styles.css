@@ -1,3 +1,9 @@
+body,html 
+{
+    padding: 0;
+    margin: 0;
+}
+
 section {
     width: 500px;
     display: flex;
@@ -5,6 +11,8 @@ section {
     align-items: center;
     flex-direction: column;
     border: 2px solid #000;
+    background-color: #d9d9d9;
+    background-image: url('bright-squares.png');
 }
 
 .dice-cont {
@@ -68,8 +76,9 @@ button:active {
 .plus-min {
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
     font-size: 25px;
+
 }
 
 .plusmin-flex {
@@ -77,20 +86,17 @@ button:active {
     align-items: center;
     justify-content: space-between;
     height: 20px;
-}
-
-.plus-min {
-    margin-right: 10px;
-}
-
-.plus-min > div {
-    margin-bottom:-2px;
+    padding-top: 5px;
 }
 
 .minus {
     font-size: 35px;
-    margin-bottom: 9px;
     margin-left: 2px;
+    padding-top: 0;
+}
+
+.plus {
+    margin-top: 0;
 }
 
 .mega-cont {
@@ -107,6 +113,7 @@ input[type=radio] {
 #mod-num {
     font-size: 25px;
     width: 50px;
+    margin-bottom: -9px;
 }
 
 #num-dice-input {
@@ -114,9 +121,14 @@ input[type=radio] {
     width: 50px;
 }
 
+#num-dice-input:disabled {
+    cursor:not-allowed;
+}
+
 .ad-dis {
     display: flex;
     align-items: center;
+    justify-content: space-between;
     flex-direction: column;
     height: 100%;
 }
@@ -137,8 +149,8 @@ select {
 }
 
 select {
-    margin-top: 6px;
     padding: 1.5px;
+    margin-bottom: 10px;
 }
 
 .mod-result {
