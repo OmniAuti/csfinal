@@ -1,0 +1,151 @@
+section {
+    width: 500px;
+    height: 400px;
+    display: flex;
+    border: 1px solid red;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: column;
+}
+
+.dice-cont {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: flex-start;
+    width: 100%;
+}
+
+button {
+
+    padding: 10px 15px;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #667daa;
+    border: 2px solid #424242;
+    border-radius: 5px;
+    color: #fff;
+    transition: all ease-in-out 250ms;
+}
+
+button img {
+    height: 45px;
+    margin-bottom: 5px;
+    transition: transform ease-in-out 1000ms;
+}
+
+button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0px 2px 2.5px #000;
+}
+
+button:hover img {
+    transform: rotate(-360deg);
+}
+
+button:active {
+    transform: translateY(0px);
+    box-shadow: 0px 0px 0px #000;
+}
+
+.roll-changes {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    height: 100px;
+}
+
+.changes {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    height: 100px;
+}
+
+.mod {
+
+}
+
+.plus-min {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 25px;
+}
+
+.plus-min div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 25px;
+    border: 1px solid red
+}
+
+.mega-cont {
+    display: flex;
+    flex-direction: column;
+}
+
+.plus-min input {
+    margin: 0px 10px;
+}
+
+input[type=radio] {
+    margin-top:5px;
+    cursor: pointer;
+    accent-color: #667daa;
+}
+
+#mod-num {
+    font-size: 25px;
+    width: 50px;
+}
+
+#num-dice-input {
+    font-size: 25px;
+    width: 50px;
+}
+
+.ad-dis {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+}
+
+#ad-dis-input {
+    font-size: 25px;
+}
+
+input:focus,
+    select:focus {
+    outline-color: #667daa;
+}
+
+input,
+select {
+    text-align: center;
+    cursor: pointer;
+}
+
+
+
+.result {
+    border-bottom: 1px solid #000;
+    bottom: 25px;
+    font-size: 35px;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.result p {
+    margin: 0;
+}
+
