@@ -28,27 +28,45 @@
                     <h3><u>Number of dice</u></h3>
                     <input id="num-dice-input" type="number" min="1" max="99" value="1" placeholder="1">
                 </div>
-                            <div class="ad-dis">
-                <h3><u>Advantage/Disadvantage</u></h3>
-                <select name="ad-dis" id="ad-dis-input" >
-                    <option selected value="none">None</option>
-                    <option value="advantage">Advantage</option>
-                    <option value="disadvantage">Disadvantage</option>
-                </select>
-            </div>
+                <div class="ad-dis">
+                    <h3><u>Advantage/Disadvantage</u></h3>
+                    <select name="ad-dis" id="ad-dis-input" >
+                        <option selected value="none">None</option>
+                        <option value="advantage">Advantage</option>
+                        <option value="disadvantage">Disadvantage</option>
+                    </select>
+                </div>
                 <div class="changes">
                     <h3><u>Modifier</u></h3>
                     <div class="plus-min">
+                        <div>
+                            <div class="plusmin-flex">
                         +<input id="plus-input" type="radio" name="mod">
+                            </div>
+                            <div class="plusmin-flex minus">
                         -<input id="minus-input" type="radio" name="mod">
+                            </div>
+                        </div>
                         <input id="mod-num" type="number" min="1" max="99" value="0" placeholder="0">
                     </div>
                 </div>
             </div>
 
 
-            <div class="result">
-                <p id="roles-arr-output"></p>
+            <div class="mod-result">
+                <div class="arr-cont">   
+                <h3><u>Dice Rolled</u></h3>   
+                <p id="rolls-arr-output"></p>
+                </div> 
+                <div class="mod-cont">
+                <h3><u>Modifier Added</u></h3>
+                <p id="mod-output"></p>
+                </div> 
+            </div>
+
+            <div class="final-result">
+
+                <h1>Final Roll</h1>        
                 <p id="dice-display"></p>
 
             </div>

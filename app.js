@@ -5,81 +5,567 @@ const diceRollTen = document.getElementById("dice-btn-ten")
 const diceRollTwelve = document.getElementById("dice-btn-twelve")
 const diceRollTwenty = document.getElementById("dice-btn-twenty")
 
-const diceShow= document.getElementById("dice-display")
+const diceShow = document.getElementById("dice-display")
+const diceArrShow = document.getElementById("rolls-arr-output")
+const modShow = document.getElementById("mod-output")
 
 const numDiceInput = document.getElementById('num-dice-input')
 const plusInput = document.getElementById('plus-input') 
 const minusInput = document.getElementById('minus-input') 
 let numModInput = document.getElementById('mod-num')
 const adDisSelect = document.getElementById('ad-dis-input')
+// CHECK FOR AND LIMIT DICE TO 2 ROLL
+adDisSelect.addEventListener('change', () => {
+ 
+    numDiceInput.disabled = false
 
-
-function diceMod(sum) {
-
-
-    let numModNum = parseInt(numModInput.value)
-
-    // DICE ROLL PLUS MINUS MOD
-    if (plusInput.checked == true)
+    if (adDisSelect.value == "advantage") 
     {
-        numModNum = numModNum * 1;
+        numDiceInput.disabled = true;
+        numDiceInput.value = 2;
     }
-    else if (minusInput.checked == true)
+    else if (adDisSelect.value == "disadvantage") 
     {
-        numModNum = numModNum * -1;
+        numDiceInput.disabled = true;
+        numDiceInput.value = 2;
     }
-    else 
+    else if (adDisSelect.value == "none")
     {
-        numModNum = numModNum
+        numDiceInput.disabled = false;
+        numDiceInput.value = 1;
     }
-    console.log(numModNum)
-    sumMod = sum + numModNum
-    console.log(sumMod, 'after')
-    return sumMod
-}
+})
 
 // 4,6,8,10,12,20
 diceRollFour.addEventListener("click", () => {
     rollArr = [];
-    const numDiceNum = parseInt(numDiceInput.value)
-    for (let i = 0; i < numDiceNum; i++) {
-    const roll = Math.ceil(Math.random() * 4)
-    //DICE INPUT
-    rollArr.push(roll)
-    console.log(rollArr)
+
+    if (adDisSelect.value == "advantage") 
+    {
+        for (let i = 0; i < 2; i++)
+        {
+            const roll = Math.ceil(Math.random() * 4)
+            rollArr.push(roll)
+        }
+
+            let max = Math.max(...rollArr)
+            diceMod(max)
+            diceShow.innerText = sumMod
+            diceArrShow.innerText = rollArr.join(", ")
+
+            if (plusInput.checked == true)
+            {
+                modShow.innerText = `+ ${numModInput.value}`
+            }
+            else if (minusInput.checked == true)
+            {
+                modShow.innerText = `- ${numModInput.value}`
+            }
+            else
+            {
+                modShow.innerText = 0
+            }
     }
-    let sumDice = rollArr.reduce((a , b) => a + b)
-    console.log(sumDice)
-    diceMod(sumDice)
-    console.log(sumMod, "mod")
-})
+    else if (adDisSelect.value == "disadvantage")
+    {
+        for (let i = 0; i < 2; i++)
+        {
+            const roll = Math.ceil(Math.random() * 4)
+            rollArr.push(roll)
+        }
 
+            let min = Math.min(...rollArr)
+            diceMod(min)
+            diceShow.innerText = sumMod
+            diceArrShow.innerText = rollArr.join(", ")
+
+             if (plusInput.checked == true)
+            {
+                modShow.innerText = `+ ${numModInput.value}`
+            }
+            else if (minusInput.checked == true)
+            {
+                modShow.innerText = `- ${numModInput.value}`
+            }
+            else
+            {
+                modShow.innerText = 0
+            }
+    }
+    else 
+    {
+        const numDiceNum = parseInt(numDiceInput.value)
+
+            for (let i = 0; i < numDiceNum; i++) {
+            const roll = Math.ceil(Math.random() * 4)
+            rollArr.push(roll)
+            }
+
+            let sumDice = rollArr.reduce((a , b) => a + b)
+            diceMod(sumDice)
+            diceShow.innerText = sumMod
+            diceArrShow.innerText = rollArr.join(", ")
+            
+            if (plusInput.checked == true)
+            {
+                modShow.innerText = `+ ${numModInput.value}`
+            }
+            else if (minusInput.checked == true)
+            {
+                modShow.innerText = `- ${numModInput.value}`
+            }
+            else
+            {
+                modShow.innerText = 0
+            }
+    }
+})
 diceRollSix.addEventListener("click", () => {
-    const roll = Math.ceil(Math.random() * 6)
+    rollArr = [];
 
-    diceShow.innerText = roll
+    if (adDisSelect.value == "advantage") 
+    {
+        for (let i = 0; i < 2; i++)
+        {
+            const roll = Math.ceil(Math.random() * 6)
+            rollArr.push(roll)
+        }
+
+            let max = Math.max(...rollArr)
+            diceMod(max)
+            diceShow.innerText = sumMod
+            diceArrShow.innerText = rollArr.join(", ")
+
+            if (plusInput.checked == true)
+            {
+                modShow.innerText = `+ ${numModInput.value}`
+            }
+            else if (minusInput.checked == true)
+            {
+                modShow.innerText = `- ${numModInput.value}`
+            }
+            else
+            {
+                modShow.innerText = 0
+            }
+    }
+    else if (adDisSelect.value == "disadvantage")
+    {
+        for (let i = 0; i < 2; i++)
+        {
+            const roll = Math.ceil(Math.random() * 6)
+            rollArr.push(roll)
+        }
+
+            let min = Math.min(...rollArr)
+            diceMod(min)
+            diceShow.innerText = sumMod
+            diceArrShow.innerText = rollArr.join(", ")
+
+             if (plusInput.checked == true)
+            {
+                modShow.innerText = `+ ${numModInput.value}`
+            }
+            else if (minusInput.checked == true)
+            {
+                modShow.innerText = `- ${numModInput.value}`
+            }
+            else
+            {
+                modShow.innerText = 0
+            }
+    }
+    else 
+    {
+        const numDiceNum = parseInt(numDiceInput.value)
+
+            for (let i = 0; i < numDiceNum; i++) {
+            const roll = Math.ceil(Math.random() * 6)
+            rollArr.push(roll)
+            }
+
+            let sumDice = rollArr.reduce((a , b) => a + b)
+            diceMod(sumDice)
+            diceShow.innerText = sumMod
+            diceArrShow.innerText = rollArr.join(", ")
+            
+            if (plusInput.checked == true)
+            {
+                modShow.innerText = `+ ${numModInput.value}`
+            }
+            else if (minusInput.checked == true)
+            {
+                modShow.innerText = `- ${numModInput.value}`
+            }
+            else
+            {
+                modShow.innerText = 0
+            }
+    }
 })
-
 diceRollEight.addEventListener("click", () => {
-    const roll = Math.ceil(Math.random() * 8)
+    rollArr = [];
 
-    diceShow.innerText = roll
+    if (adDisSelect.value == "advantage") 
+    {
+        for (let i = 0; i < 2; i++)
+        {
+            const roll = Math.ceil(Math.random() * 8)
+            rollArr.push(roll)
+        }
+
+            let max = Math.max(...rollArr)
+            diceMod(max)
+            diceShow.innerText = sumMod
+            diceArrShow.innerText = rollArr.join(", ")
+
+            if (plusInput.checked == true)
+            {
+                modShow.innerText = `+ ${numModInput.value}`
+            }
+            else if (minusInput.checked == true)
+            {
+                modShow.innerText = `- ${numModInput.value}`
+            }
+            else
+            {
+                modShow.innerText = 0
+            }
+    }
+    else if (adDisSelect.value == "disadvantage")
+    {
+        for (let i = 0; i < 2; i++)
+        {
+            const roll = Math.ceil(Math.random() * 8)
+            rollArr.push(roll)
+        }
+
+            let min = Math.min(...rollArr)
+            diceMod(min)
+            diceShow.innerText = sumMod
+            diceArrShow.innerText = rollArr.join(", ")
+
+             if (plusInput.checked == true)
+            {
+                modShow.innerText = `+ ${numModInput.value}`
+            }
+            else if (minusInput.checked == true)
+            {
+                modShow.innerText = `- ${numModInput.value}`
+            }
+            else
+            {
+                modShow.innerText = 0
+            }
+    }
+    else 
+    {
+        const numDiceNum = parseInt(numDiceInput.value)
+
+            for (let i = 0; i < numDiceNum; i++) {
+            const roll = Math.ceil(Math.random() * 8)
+            rollArr.push(roll)
+            }
+
+            let sumDice = rollArr.reduce((a , b) => a + b)
+            diceMod(sumDice)
+            diceShow.innerText = sumMod
+            diceArrShow.innerText = rollArr.join(", ")
+            
+            if (plusInput.checked == true)
+            {
+                modShow.innerText = `+ ${numModInput.value}`
+            }
+            else if (minusInput.checked == true)
+            {
+                modShow.innerText = `- ${numModInput.value}`
+            }
+            else
+            {
+                modShow.innerText = 0
+            }
+    }
 })
 diceRollTen.addEventListener("click", () => {
-    const roll = Math.ceil(Math.random() * 10)
+    rollArr = [];
 
-    diceShow.innerText = roll
+    if (adDisSelect.value == "advantage") 
+    {
+        for (let i = 0; i < 2; i++)
+        {
+            const roll = Math.ceil(Math.random() * 10)
+            rollArr.push(roll)
+        }
+
+            let max = Math.max(...rollArr)
+            diceMod(max)
+            diceShow.innerText = sumMod
+            diceArrShow.innerText = rollArr.join(", ")
+
+            if (plusInput.checked == true)
+            {
+                modShow.innerText = `+ ${numModInput.value}`
+            }
+            else if (minusInput.checked == true)
+            {
+                modShow.innerText = `- ${numModInput.value}`
+            }
+            else
+            {
+                modShow.innerText = 0
+            }
+    }
+    else if (adDisSelect.value == "disadvantage")
+    {
+        for (let i = 0; i < 2; i++)
+        {
+            const roll = Math.ceil(Math.random() * 10)
+            rollArr.push(roll)
+        }
+
+            let min = Math.min(...rollArr)
+            diceMod(min)
+            diceShow.innerText = sumMod
+            diceArrShow.innerText = rollArr.join(", ")
+
+             if (plusInput.checked == true)
+            {
+                modShow.innerText = `+ ${numModInput.value}`
+            }
+            else if (minusInput.checked == true)
+            {
+                modShow.innerText = `- ${numModInput.value}`
+            }
+            else
+            {
+                modShow.innerText = 0
+            }
+    }
+    else 
+    {
+        const numDiceNum = parseInt(numDiceInput.value)
+
+            for (let i = 0; i < numDiceNum; i++) {
+            const roll = Math.ceil(Math.random() * 10)
+            rollArr.push(roll)
+            }
+
+            let sumDice = rollArr.reduce((a , b) => a + b)
+            diceMod(sumDice)
+            diceShow.innerText = sumMod
+            diceArrShow.innerText = rollArr.join(", ")
+            
+            if (plusInput.checked == true)
+            {
+                modShow.innerText = `+ ${numModInput.value}`
+            }
+            else if (minusInput.checked == true)
+            {
+                modShow.innerText = `- ${numModInput.value}`
+            }
+            else
+            {
+                modShow.innerText = 0
+            }
+    }
 })
-
 diceRollTwelve.addEventListener("click", () => {
-    const roll = Math.ceil(Math.random() * 12)
+    rollArr = [];
 
-    diceShow.innerText = roll
+    if (adDisSelect.value == "advantage") 
+    {
+        for (let i = 0; i < 2; i++)
+        {
+            const roll = Math.ceil(Math.random() * 12)
+            rollArr.push(roll)
+        }
+
+            let max = Math.max(...rollArr)
+            diceMod(max)
+            diceShow.innerText = sumMod
+            diceArrShow.innerText = rollArr.join(", ")
+
+            if (plusInput.checked == true)
+            {
+                modShow.innerText = `+ ${numModInput.value}`
+            }
+            else if (minusInput.checked == true)
+            {
+                modShow.innerText = `- ${numModInput.value}`
+            }
+            else
+            {
+                modShow.innerText = 0
+            }
+    }
+    else if (adDisSelect.value == "disadvantage")
+    {
+        for (let i = 0; i < 2; i++)
+        {
+            const roll = Math.ceil(Math.random() * 12)
+            rollArr.push(roll)
+        }
+
+            let min = Math.min(...rollArr)
+            diceMod(min)
+            diceShow.innerText = sumMod
+            diceArrShow.innerText = rollArr.join(", ")
+
+             if (plusInput.checked == true)
+            {
+                modShow.innerText = `+ ${numModInput.value}`
+            }
+            else if (minusInput.checked == true)
+            {
+                modShow.innerText = `- ${numModInput.value}`
+            }
+            else
+            {
+                modShow.innerText = 0
+            }
+    }
+    else 
+    {
+        const numDiceNum = parseInt(numDiceInput.value)
+
+            for (let i = 0; i < numDiceNum; i++) {
+            const roll = Math.ceil(Math.random() * 12)
+            rollArr.push(roll)
+            }
+
+            let sumDice = rollArr.reduce((a , b) => a + b)
+            diceMod(sumDice)
+            diceShow.innerText = sumMod
+            diceArrShow.innerText = rollArr.join(", ")
+            
+            if (plusInput.checked == true)
+            {
+                modShow.innerText = `+ ${numModInput.value}`
+            }
+            else if (minusInput.checked == true)
+            {
+                modShow.innerText = `- ${numModInput.value}`
+            }
+            else
+            {
+                modShow.innerText = 0
+            }
+    }
 })
-
 diceRollTwenty.addEventListener("click", () => {
-    const roll = Math.ceil(Math.random() * 20)
+    rollArr = [];
 
-    diceShow.innerText = roll
+    if (adDisSelect.value == "advantage") 
+    {
+        for (let i = 0; i < 2; i++)
+        {
+            const roll = Math.ceil(Math.random() * 20)
+            rollArr.push(roll)
+        }
+
+            let max = Math.max(...rollArr)
+            diceMod(max)
+            diceShow.innerText = sumMod
+            diceArrShow.innerText = rollArr.join(", ")
+
+            if (plusInput.checked == true)
+            {
+                modShow.innerText = `+ ${numModInput.value}`
+            }
+            else if (minusInput.checked == true)
+            {
+                modShow.innerText = `- ${numModInput.value}`
+            }
+            else
+            {
+                modShow.innerText = 0
+            }
+    }
+    else if (adDisSelect.value == "disadvantage")
+    {
+        for (let i = 0; i < 2; i++)
+        {
+            const roll = Math.ceil(Math.random() * 20)
+            rollArr.push(roll)
+        }
+
+            let min = Math.min(...rollArr)
+            diceMod(min)
+            diceShow.innerText = sumMod
+            diceArrShow.innerText = rollArr.join(", ")
+
+             if (plusInput.checked == true)
+            {
+                modShow.innerText = `+ ${numModInput.value}`
+            }
+            else if (minusInput.checked == true)
+            {
+                modShow.innerText = `- ${numModInput.value}`
+            }
+            else
+            {
+                modShow.innerText = 0
+            }
+    }
+    else 
+    {
+        const numDiceNum = parseInt(numDiceInput.value)
+
+            for (let i = 0; i < numDiceNum; i++) {
+            const roll = Math.ceil(Math.random() * 20)
+            rollArr.push(roll)
+            }
+
+            let sumDice = rollArr.reduce((a , b) => a + b)
+            diceMod(sumDice)
+            diceShow.innerText = sumMod
+            diceArrShow.innerText = rollArr.join(", ")
+            
+            if (plusInput.checked == true)
+            {
+                modShow.innerText = `+ ${numModInput.value}`
+            }
+            else if (minusInput.checked == true)
+            {
+                modShow.innerText = `- ${numModInput.value}`
+            }
+            else
+            {
+                modShow.innerText = 0
+            }
+    }
 })
 
+
+function diceMod(sum) {
+    
+    let numModNum = parseInt(numModInput.value)
+    // DICE ROLL PLUS MINUS MOD
+    if (numModNum != 0)
+    {
+        if (plusInput.checked == true)
+        {
+            numModNum = numModNum * 1;
+        }
+        else if (minusInput.checked == true)
+        {
+            numModNum = numModNum * -1;
+        }
+        else 
+        {
+            numModNum = numModNum
+        }
+        sumMod = sum + numModNum
+        if (sumMod < 0) 
+        {
+            sumMod = 0
+        }
+    }
+    else 
+    {
+        sumMod = sum
+    }
+   
+    
+    return sumMod
+}
