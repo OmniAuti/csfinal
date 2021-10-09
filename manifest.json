@@ -6,7 +6,7 @@
     "background": {
       "service_worker": "background.js"
     },
-    "permissions": ["none"],
+    "permissions": ["notifications"],
     "action": {
       "default_popup": "index.html",
       "default_icon": {
