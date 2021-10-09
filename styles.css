@@ -1,7 +1,9 @@
+
 body,html 
 {
     padding: 0;
     margin: 0;
+    color: #424242;
 }
 
 section {
@@ -10,7 +12,7 @@ section {
     justify-content: space-around;
     align-items: center;
     flex-direction: column;
-    border: 2px solid #000;
+    border: 2px solid #424242;
     background-image: url('bright-squares.png');
     background-position: center;
     background-size: cover;
@@ -24,14 +26,14 @@ section {
     margin-top: 5px;
 }
 
-.title h1 {
+.title-one {
+    position: relative;
     letter-spacing: 2.5px;
-    font-size: 20px;
+    font-size: 25px;
     margin: 0;
-    text-shadow: -0.025em  0.025em 0em #667daa,
-    -0.05em  0.05em 0em #232323,
-    -0.075em  0.075em 0em #667daa,
-    -0.2em  0.1em 0em #fff;
+    z-index: 99;
+    color: #667daa;
+    text-shadow: 0px 0px 1px #424242;
 }
 
 .dice-cont {
@@ -64,7 +66,7 @@ button img {
 
 button:hover {
     transform: translateY(-2px);
-    box-shadow: 0px 2px 2.5px #000;
+    box-shadow: 0px 2px 2.5px #424242;
 }
 
 button:hover img {
@@ -73,7 +75,7 @@ button:hover img {
 
 button:active {
     transform: translateY(0px);
-    box-shadow: 0px 0px 0px #000;
+    box-shadow: 0px 0px 0px #424242;
 }
 
 .roll-changes {
@@ -167,7 +169,8 @@ select {
     text-align: center;
     cursor: pointer;
     border-radius: 5px;
-    border: 1px solid #000;
+    border: 1px solid #424242;
+    color: #424242;
 }
 
 select {
@@ -184,13 +187,13 @@ select {
 }
 
 #dice-display {
-    border-bottom: 1px solid #000;
+    border-bottom: 1px solid #424242;
     width: 50px;
     text-align: center;
 }
 
 #rolls-arr-output {
-    border-bottom: 1px solid #000;
+    border-bottom: 1px solid #424242;
     width: 200px;
     white-space: nowrap;
     overflow-x: hidden;
@@ -199,7 +202,7 @@ select {
 }
 
 #mod-output {
-    border-bottom: 1px solid #000;
+    border-bottom: 1px solid #424242;
     width: 50px;
 }
 
@@ -228,4 +231,14 @@ select {
     font-size: 45px;
     margin: 10px 0px;
     padding: 0 10px;
+}
+
+.coffee {
+    position: absolute;
+    right: 5px;
+    bottom: 0;
+}
+
+.coffee img {
+    width: 20px;
 }
